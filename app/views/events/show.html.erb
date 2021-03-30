@@ -8,22 +8,17 @@
           <div class="columns is-mobile is-centered">
             <div class="column is-5">
               <p><small>Hosted by</small></p>
-              <h4 class="subtitle is-4"><%= @event.creator.username %></h4>
+              <h4 class="subtitle is-4"><%= @event.user.username %></h4>
             </div>
             
             <div class="column">
               <div class="dropdown is-hoverable">
-                <div class="dropdown-trigger">
-                  <button class="button is-fullwidth" aria-haspopup="true" aria-controls="dropdown-menu3">
-                    <span>Guests: <%= User.find(@event.attendances.invited.map { |rol| rol.user_id }).count %></span>
-                  </button>
-                </div>
                 <div class="dropdown-menu" id="dropdown-menu6" role="menu">
                   <div class="dropdown-content">
                     <ul>
-                      <% if User.find(@event.attendances.invited.map { |rol| rol.user_id }).any? %>
+                      <% if User.find(@event.attendances.map { |rol| rol.user_id }).any? %>
                         <div class="dropdown-item">
-                          <% User.find(@event.attendances.invited.map { |rol| rol.user_id }).each do |user| %>
+                          <% User.find(@event.attendances.map { |rol| rol.user_id }).each do |user| %>
                             <li><p><%= user.name %></p></li>
                           <% end %>
                         </div>
@@ -38,15 +33,15 @@
               <div class="dropdown is-hoverable">
                 <div class="dropdown-trigger">
                   <button class="button is-fullwidth" aria-haspopup="true" aria-controls="dropdown-menu3">
-                    <span>Attendies: <%= User.find(@event.attendances.accepted.map { |rol| rol.user_id }).count %></span>
+                    <span>Attendies: <%= User.find(@event.attendances.map { |rol| rol.user_id }).count %></span>
                   </button>
                 </div>
                 <div class="dropdown-menu" id="dropdown-menu6" role="menu">
                   <div class="dropdown-content">
                     <ul>
-                      <% if User.find(@event.attendances.accepted.map { |rol| rol.user_id }).any? %>
+                      <% if User.find(@event.attendances.map { |rol| rol.user_id }).any? %>
                         <div class="dropdown-item">
-                          <% User.find(@event.attendances.accepted.map { |rol| rol.user_id }).each do |user| %>
+                          <% User.find(@event.attendances.map { |rol| rol.user_id }).each do |user| %>
                             <li><p><%= user.username %></p></li>
                           <% end %>
                         </div>
@@ -79,7 +74,7 @@
 
           <br/>
 
-          <% if @event.creator == current_user %>
+          <% if @event.user == current_user %>
             <%= button_to "Invite", users_path, params: {:event_id => @event.id}, method: :get, class: "button is-info is-large is-fullwidth" %>
           <% else %>
             <% attendance = Attendance.find_by(event_id: @event.id, user_id: current_user.id) %>

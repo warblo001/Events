@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_name(params[:username])
+    user = User.find_by_username(params[:username])
     if user
       session[:user_id] = user.id
       redirect_to root_path, notice: "Logged in!"
