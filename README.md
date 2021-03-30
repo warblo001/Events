@@ -1,24 +1,54 @@
-# README
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Private-Events
 
-Things you may want to cover:
+This project is about building a exclusive events site where users can sign up with a username, create and attend events.
 
-* Ruby version
+## Events project features:
 
-* System dependencies
+- Users can make and attend events.
 
-* Configuration
+## Built With
 
-* Database creation
+- Ruby on Rails
+- Bulma
 
-* Database initialization
+## Getting Started
 
-* How to run the test suite
+### Prerequisites
 
-* Services (job queues, cache servers, search engines, etc.)
+If you intend to download the project, you will need to have Ruby and Rails already installed on your local machine.
 
-* Deployment instructions
+- For more information on how to install Ruby, follow [this link.](https://www.ruby-lang.org/en/downloads/)
+- For more information on how to install Rails, follow [this link.](https://guides.rubyonrails.org/getting_started.html/)
 
-* ...
+## Getting Started
+
+### Setup
+
+1. Run `git clone git@github.com:warblo001/Events.git` => to clone the source code
+2. Run `cd Events` => to change directory
+3. Run `bundle install` => to install all of the gems
+4. Run `yarn install` => to make sure you have application.js
+5. Run `bundle exec rake webpacker:install` => to avoid any webpacker issues
+6. Run `rails db:migrate` to migrate all tables
+7. Run `rails s` => to start the server
+8. Open `localhost:3000` on a browser of your choice
+
+## Authors
+
+😬 **Alan Solis**
+
+- GitHub: [@github](https://github.com/warblo001)
+- Twitter: [@twitter](https://twitter.com/Alan55572391)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/alan-solis-b567b044/)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/warblo001/Events/issues).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
