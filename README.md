@@ -2,7 +2,7 @@
 
 # Private-Events
 
-This project is about building a exclusive events site where users can sign up with a username, create and attend events.
+This project is about building an exclusive events site where users can sign up with a username, create and attend events.
 
 ## Events project features:
 
