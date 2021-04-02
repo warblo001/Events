@@ -1,8 +1,6 @@
 class AttendanceController < ApplicationController
   before_action :require_login
 
-  def new; end
-
   def create
     event = Event.find(params[:event_id])
     attendance = Attendance.new(event_id: event.id, user_id: params[:user_id])
@@ -20,7 +18,7 @@ class AttendanceController < ApplicationController
   def destroy
     event = Event.find(params[:event_id])
     attendance = Attendance.find(params[:id])
-    if current_user == event.creator
+    if current_user == event.user
       attendance.destroy
       flash[:notice] = 'Invitation cancelled!'
     else
@@ -36,7 +34,7 @@ class AttendanceController < ApplicationController
     @attendance = Attendance.find_by(event_id: params[:event_id], user_id: current_user.id)
     if @attendance&.invited?
       @attendance.accepted!
-      flash[:notice] = "Thank you for signing up for '#{@event.name}'!"
+      flash[:notice] = "Thank you for signing up for the '#{@event.name}'!"
     else
       flash[:alert] = 'Your name is not on the invitation list'
     end

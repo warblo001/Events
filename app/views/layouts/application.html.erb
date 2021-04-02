@@ -40,7 +40,9 @@
           <div class="navbar-item">
             <div class="field is-grouped">
               <p class="control">
+                <% if current_user != nil %>
                 <%= link_to "Create event", new_event_path, class: "button is-white" %>
+                <% end %>
               </p>
               <% if current_user %>
                 <p class="control">

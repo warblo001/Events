@@ -13,6 +13,11 @@
             
             <div class="column">
               <div class="dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                    <button class="button is-fullwidth" aria-haspopup="true" aria-controls="dropdown-menu3">
+                      <span>Invitees: <%= User.find(@event.attendances.map { |rol| rol.user_id }).count %></span>
+                    </button>
+                  </div>
                 <div class="dropdown-menu" id="dropdown-menu6" role="menu">
                   <div class="dropdown-content">
                     <ul>
@@ -81,7 +86,7 @@
             <% if attendance && attendance.accepted? %>
               <%= button_to "Cancel attendance", attendance_path(id: attendance.id, event_id: @event.id, user_id: current_user.id), method: :delete, class: "button is-danger is-large is-fullwidth" %>
             <% else %>
-              <%= button_to "Attend", attendance_path(event_id: @event.id), method: :patch, class: "button is-primary is-large is-fullwidth" %>
+              <%= link_to "Attend", root_path, class: "button is-primary is-large is-fullwidth", notice: "Thank you" %>
             <% end %>
           <% end %>
 
