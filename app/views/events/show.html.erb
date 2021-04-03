@@ -86,13 +86,13 @@
             <% if attendance && attendance.accepted? %>
               <%= button_to "Cancel attendance", attendance_path(id: attendance.id, event_id: @event.id, user_id: current_user.id), method: :delete, class: "button is-danger is-large is-fullwidth" %>
             <% else %>
-              <%= link_to "Attend", root_path, class: "button is-primary is-large is-fullwidth", notice: "Thank you" %>
+              <%= link_toattend %>
             <% end %>
           <% end %>
 
           <br/>
 
-          <%= link_to 'Back to Events', root_path, class: "button is-fullwidth" %>
+          <%= link_toevent %>
 
         </div>
       </div>

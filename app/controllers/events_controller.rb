@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  include EventsHelper
+  
   # GET /events or /events.json
   def index
     @events = Event.all

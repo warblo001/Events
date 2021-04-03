@@ -11,7 +11,7 @@
                 <p>User is not hosting</p>
               <% else %>
                 <% @user.events.each do |event| %>
-                  <li class="has-text-centered"><%=link_to event.name, event_path(event) %></li>
+                  <li class="has-text-centered"><%= link_toevent %></li>
                 <% end %>
               <% end %>
             </ul>
@@ -24,7 +24,7 @@
                 <p>No planned parties</p>
               <% else %>
                 <% @user.attended_events.where('date >= ?', Date.today).each do |event| %>
-                  <li class="has-text-centered"><%=link_to event.name, event_path(event) %></li>
+                  <li class="has-text-centered"><%= link_toevent %></li>
                 <% end %>
               <% end %>
             </ul>
@@ -37,7 +37,7 @@
                 <p>User is not partying</p>
               <% else %>
                 <% @user.attended_events.where('date < ?', Date.today).each do |event| %>
-                  <li class="has-text-centered"><%=link_to event.name, event_path(event) %></li>
+                  <li class="has-text-centered"><%= link_toevent %></li>
                 <% end %>
               <% end %>
             </ul>
