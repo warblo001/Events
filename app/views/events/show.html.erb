@@ -24,7 +24,7 @@
                       <% if User.find(@event.attendances.map { |rol| rol.user_id }).any? %>
                         <div class="dropdown-item">
                           <% User.find(@event.attendances.map { |rol| rol.user_id }).each do |user| %>
-                            <li><p><%= user.name %></p></li>
+                            <li><p><%= user.username %></p></li>
                           <% end %>
                         </div>
                       <% end %>
