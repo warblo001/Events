@@ -4,10 +4,18 @@ module EventsHelper
   end
 
   def link_toevent
-    link_to 'Back to Event', root_path
+    link_to 'Back to Event', root_path, class: 'button is-fullwidth'
+  end
+
+  def linkto_event(event)
+    link_to event.name, event_path(event), class: 'card-header-title is-centered'
   end
 
   def link_back
     link_to 'Back to Event', event_path(id: params[:event_id]), class: 'button is-fullwidth'
+  end
+
+  def event_trunc(event)
+    event.description.truncate_words(18)
   end
 end

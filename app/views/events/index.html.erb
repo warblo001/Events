@@ -6,11 +6,11 @@
         <div class="column is-3">
           <div class="card">
             <header class="card-header">
-              <%= link_to event.name, event_path(event), class: "card-header-title is-centered" %>
+              <%= linkto_event(event) %>
             </header>
             <div class="card-content">
               <div class="content has-text-justified">
-                <%= event.description.truncate_words(18) %>
+                <%= event_trunc(event) %>
               </div>
             </div>
             <footer class="card-footer">
@@ -32,11 +32,11 @@
         <div class="column is-3">
           <div class="card">
             <header class="card-header">
-              <%= link_to event.name, event_path(event), class: "card-header-title is-centered" %>
+              <%= linkto_event(event) %>
             </header>
             <div class="card-content">
               <div class="content has-text-justified">
-                <%= event.description.truncate_words(18) %>
+                <%= event_trunc(event) %>
               </div>
             </div>
             <footer class="card-footer">
