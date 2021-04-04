@@ -1,4 +1,4 @@
-class AttendanceController < ApplicationController
+class AttendancesController < ApplicationController
   before_action :require_login
 
   def create
@@ -6,7 +6,6 @@ class AttendanceController < ApplicationController
     attendance = Attendance.new(event_id: event.id, user_id: params[:user_id])
 
     if attendance.save
-      attendance.invited!
       flash[:notice] = 'Invitation sent!'
       redirect_to users_path(event_id: event.id)
     else
@@ -22,18 +21,16 @@ class AttendanceController < ApplicationController
       attendance.destroy
       flash[:notice] = 'Invitation cancelled!'
     else
-      attendance.invited!
       flash[:notice] = "You're not longer assisting #{event.name}!"
     end
 
-    redirect_to users_path(event_id: event.id, id: enrollment.id)
+    redirect_to users_path(event_id: event.id, id: attendance.id)
   end
 
   def update
     @event = Event.find(params[:event_id])
     @attendance = Attendance.find_by(event_id: params[:event_id], user_id: current_user.id)
-    if @attendance&.invited?
-      @attendance.accepted!
+    if @attendance
       flash[:notice] = "Thank you for signing up for the '#{@event.name}'!"
     else
       flash[:alert] = 'Your name is not on the invitation list'
