@@ -13,7 +13,13 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
-    redirect_to root_path, notice: 'Logged out!'
+    user = User.find_by(params[:username])
+    if user
+      session[:user_id] = nil
+      redirect_to root_path, notice: 'Logged out!'
+    else
+    flash.now.alert = 'Could not log out'
+    render 'new'
+    end
   end
 end
