@@ -9,7 +9,7 @@ RSpec.describe 'Index', type: :request do
   end
 
   describe 'Access login' do
-    before { get users_log_in_path }
+    before { get login }
     it 'Allows access to login page. Return code 200' do
       expect(response).to have_http_status(200)
     end
