@@ -1,4 +1,5 @@
 class AttendancesController < ApplicationController
+  include AttendancesHelper
   before_action :require_login
 
   def create

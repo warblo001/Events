@@ -18,4 +18,12 @@ module EventsHelper
   def event_trunc(event)
     event.description.truncate_words(18)
   end
+
+  def upcomingev
+    @user.attended_events.where('date >= ?', Date.today)
+  end
+
+  def attevents
+    @user.attended_events.where('date < ?', Date.today)
+  end
 end
