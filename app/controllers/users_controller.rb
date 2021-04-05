@@ -10,10 +10,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.save
-    session[:user_id] = @user.id
-    flash.notice = "User #{@user.username} successfully created!"
-    redirect_to user_path(@user)
+    if @user.save
+      session[:user_id] = @user.id
+      flash.notice = "User #{@user.username} successfully created!"
+      redirect_to user_path(@user)
+    else
+      flash.notice = "Invalid username"
+      render 'new'
+    end
   end
 
   def index
