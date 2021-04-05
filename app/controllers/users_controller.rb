@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       flash.notice = "User #{@user.username} successfully created!"
       redirect_to user_path(@user)
     else
-      flash.notice = "Invalid username"
+      flash.notice = 'Invalid username'
       render 'new'
     end
   end
