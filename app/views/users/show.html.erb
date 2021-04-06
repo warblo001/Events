@@ -1,0 +1,49 @@
+<div class="section">
+  <div class="container">
+	  <div class="columns is-centered">
+      <div class="column is-9">
+        <h2 class="title is-2 is-spaced has-text-centered"><%= @user.username %>'s Profile</h2>
+	      <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h3 class="subtitle is-3 has-text-centered">Hosted Events: <%= @user.events.count %></h3>
+            <ul>
+              <% if @user.events.empty? %>
+                <p>User is not hosting</p>
+              <% else %>
+                <% @user.events.each do |event| %>
+                  <li class="has-text-centered"><%= link_toevent %></li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+
+          <div class="column has-text-centered">
+            <h3 class="subtitle is-3">Upcoming Events: <%= upcomingev.count %></h3>
+            <ul>
+              <% if upcomingev.count.zero? %>
+                <p>No planned parties</p>
+              <% else %>
+                <% upcomingev.each do |event| %>
+                  <li class="has-text-centered"><%= link_toevent %></li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+
+          <div class="column has-text-centered">
+            <h3 class="subtitle is-3 has-text-centered">Attended Events: <%= attevents.count %></h3>
+            <ul>
+              <% if @user.attended_events.empty? %>
+                <p>User is not partying</p>
+              <% else %>
+                <% attevents.each do |event| %>
+                  <li class="has-text-centered"><%= link_toevent %></li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
