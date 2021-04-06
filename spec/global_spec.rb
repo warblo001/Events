@@ -9,7 +9,7 @@ RSpec.describe 'Index', type: :request do
   end
 
   describe 'Access new user' do
-    before { get users_new_path }
+    before { get new_user_path }
     it 'Allows access to new user page. Return code 200' do
       expect(response).to have_http_status(200)
     end
